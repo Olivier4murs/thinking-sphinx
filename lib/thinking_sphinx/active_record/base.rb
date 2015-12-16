@@ -12,21 +12,21 @@ module ThinkingSphinx::ActiveRecord::Base
   end
 
   module ClassMethods
-    def facets(query = nil, options = {})
+    def ts_facets(query = nil, options = {})
       merge_search ThinkingSphinx.facets, query, options
     end
 
-    def search(query = nil, options = {})
+    def ts_search(query = nil, options = {})
       merge_search ThinkingSphinx.search, query, options
     end
 
-    def search_count(query = nil, options = {})
-      search(query, options).total_entries
+    def ts_search_count(query = nil, options = {})
+      ts_search(query, options).total_entries
     end
 
-    def search_for_ids(query = nil, options = {})
+    def ts_search_for_ids(query = nil, options = {})
       ThinkingSphinx::Search::Merger.new(
-        search(query, options)
+        ts_search(query, options)
       ).merge! nil, :ids_only => true
     end
 
