@@ -102,7 +102,7 @@ class ThinkingSphinx::FacetSearch
   end
 
   def max_matches
-    configuration.settings['max_matches'] || 1000
+    configuration.settings['max_matches'] || 10000
   end
 
   def limit
